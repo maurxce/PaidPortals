@@ -1,0 +1,10 @@
+successful-reload: "&5&l[UD] &dSuccessfully reloaded config files."
+successful-reset: "&5&l[UD] &dSuccessfully reset dimensions pool."
+
+no-permission: "&5&l[UD] &dSorry! You don't have permission to execute this command."
+not-enough-args: "&5&l[UD] &dNot enough arguments provided! &7&oUsage: %usage%" # %usage%
+invalid-args: "&5&l[UD] &dInvalid arguments provided! &7&oUsage: %usage%" # %usage%
+
+insufficient-funds: "&5&l[UD] &dYou don't have enough money for this."
+player-paid: "&5&l[UD] &dPlayer &o%username% &dhas paid &5&l$%amount% &dinto the dimension pool!" # %username%, %amount%
+dimension-unlocked: "&5&l[UD] &dUnlocked dimension &5&l%dimension%" # %dimension%

@@ -1,0 +1,42 @@
+name: UnlockableDimensions
+version: '${project.version}'
+main: me.maurxce.unlockabledimensions.Main
+api-version: 1.19
+prefix: UnlockableDimensions
+authors: [ maurxce ]
+description: A plugin which locks dimensions until a certain amount of money was paid by the players (in a pool)
+website: https://maurxce.dev/
+softdepend: [ PlaceholderAPI ]
+depend: [ Vault ]
+
+commands:
+  reload:
+    description: reload config files
+    usage: /<command>
+    permission: dimension.reload
+
+  resetpool:
+    description: reset the pool
+    usage: /<command>
+    permission: dimension.reset
+
+  dpay:
+    description: universal command to pay for a specific dimension pool
+    usage: /<command> [amount]
+    aliases:
+      - dimensionpool
+      - dimensionpay
+    permission: dimension.dimensionpay
+
+permissions:
+  dimension.reload:
+    description: permission to reload config files
+    default: op
+
+  dimension.resetpool:
+    description: permission to reset a specific dimension pool
+    default: op
+
+  dimension.dimensionpay:
+    description: permission to pay into all pools
+    default: true

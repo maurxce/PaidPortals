@@ -1,0 +1,4 @@
+# YAML Saving is temporary, I will try and add more database options later
+paid: 0
+nether-locked: true
+the_end-locked: true
