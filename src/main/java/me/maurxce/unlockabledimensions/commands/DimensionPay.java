@@ -26,7 +26,6 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
 
     private final FileConfiguration config = FileManager.getConfig();
     private final FileConfiguration lang = FileManager.getLang();
-    //private final FileConfiguration pool = FileManager.getPool();
     private Database database = Main.instance.getDbManager().getDatabase();
 
     @Override
@@ -94,12 +93,8 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
         return command.getUsage().replace("<command>", label);
     }
 
-    // only YAML rn
     public void payIntoPool(Player player, int amount) {
         EconomyManager.withdraw(player, amount);
-
-        /*int alreadyPaid = pool.getInt("paid");
-        pool.set("paid", alreadyPaid + amount);*/
         database.addPaid(amount);
 
         try {
@@ -115,16 +110,8 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
         }
     }
 
-    // only YAML rn
     public void unlockDimension(String dimension) {
-        System.out.println(dimension);
         String name = WordUtils.capitalizeFully(dimension.replace("_", " "));
-        System.out.println(name);
-
-        /*boolean locked = pool.getBoolean(dimension + "-locked");
-        System.out.println(locked);
-        int goal = config.getInt(dimension + ".unlock-amount");
-        System.out.println(goal);*/
 
         int goal = config.getInt(dimension + ".unlock-amount");
         boolean locked = database.isLocked(dimension);
@@ -136,7 +123,6 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
 
             Bukkit.broadcastMessage(ChatUtils.translate(dimensionUnlocked));
 
-            //pool.set(dimension + "-locked", false);
             database.unlockDimension(dimension);
         }
     }
