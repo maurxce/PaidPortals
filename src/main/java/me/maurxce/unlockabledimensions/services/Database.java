@@ -45,10 +45,4 @@ public interface Database {
      * @param dimension
      */
     void unlockDimension(String dimension);
-
-    /**
-     * @TODO: remove if not needed
-     * @param dimension
-     */
-    void lockDimension(String dimension);
 }

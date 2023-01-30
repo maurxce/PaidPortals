@@ -63,12 +63,6 @@ public class YAML implements Database {
         reload(true);
     }
 
-    @Override
-    public void lockDimension(String dimension) {
-        database.set(dimension + "-locked", true);
-        reload(true);
-    }
-
     private void reload(boolean save) {
         try {
             if (save) database.save(file);
