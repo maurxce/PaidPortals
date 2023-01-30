@@ -3,6 +3,7 @@ package me.maurxce.unlockabledimensions;
 import me.maurxce.unlockabledimensions.managers.CommandManager;
 import me.maurxce.unlockabledimensions.managers.EconomyManager;
 import me.maurxce.unlockabledimensions.managers.FileManager;
+import me.maurxce.unlockabledimensions.managers.PlaceholderManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -26,18 +27,10 @@ public final class Main extends JavaPlugin {
             return;
         }
 
-        // PlaceholderManager?
-        if (!setupPlaceholders()) {
+        if (!PlaceholderManager.setupPlaceholders()) {
             getLogger().warning("Couldn't find dependency: PlaceholderAPI");
             return;
         }
-    }
-
-    private boolean setupPlaceholders() {
-        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") == null) return false;
-
-        ///////////////////////// register here
-        return true;
     }
 
     @Override
