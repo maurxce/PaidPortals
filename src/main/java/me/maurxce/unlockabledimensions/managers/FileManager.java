@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
+// remove pool.yml
 public class FileManager {
 
     private static final FileConfiguration config = new YamlConfiguration();

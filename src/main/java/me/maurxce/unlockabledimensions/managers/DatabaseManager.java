@@ -5,6 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class DatabaseManager {
 
     private static final FileConfiguration config = FileManager.getConfig();
+    private Database database = null;
 
-
+    // get database
 }
