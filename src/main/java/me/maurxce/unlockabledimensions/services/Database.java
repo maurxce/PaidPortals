@@ -20,17 +20,35 @@ public interface Database {
 
     void disconnect();
 
-    Database getInstance();
-
+    /**
+     * @return total amount in pool
+     */
     int getPaid();
 
+    /**
+     * @param amount
+     */
     void setPaid(int amount);
 
+    /**
+     * @param amount
+     */
     void addPaid(int amount);
 
+    /**
+     * @param dimension
+     * @return whether dimension is locked or not
+     */
     boolean isLocked(String dimension);
 
+    /**
+     * @param dimension
+     */
     void unlockDimension(String dimension);
 
+    /**
+     * @TODO: remove if not needed
+     * @param dimension
+     */
     void lockDimension(String dimension);
 }

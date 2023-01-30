@@ -36,11 +36,6 @@ public class YAML implements Database {
     }
 
     @Override
-    public Database getInstance() {
-        return this;
-    }
-
-    @Override
     public int getPaid() {
         return database.getInt("paid");
     }

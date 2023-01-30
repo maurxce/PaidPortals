@@ -28,6 +28,6 @@ public class DatabaseManager {
     }
 
     public Database getDatabase() {
-        return database.getInstance();
+        return database;
     }
 }
