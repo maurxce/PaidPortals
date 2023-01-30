@@ -1,6 +1,19 @@
 #   UnlockableDimensions
 #   by maurxce
 
+# DATABASE
+# types: mysql, mongodb, sqlite, nitrite, yaml
+# default ports: 3306 (mysql), 27017 (mongodb)
+database:
+  type: yaml
+
+  host: localhost
+  port: 3306
+
+  name: unlockabledimensions
+  username: ud_user
+  password:
+
 # ECONOMY POOL SETTINGS
 # unlock-amount: total amount the players need to pay the pool to unlock a dimension
 nether:

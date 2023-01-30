@@ -35,7 +35,7 @@ public class FileManager {
         }
     }
 
-    private static void saveResource(String resource) {
+    public static void saveResource(String resource) {
         Main.instance.saveResource(resource, false);
     }
 
