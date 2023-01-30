@@ -2,12 +2,12 @@
 #   by maurxce
 
 # DATABASE
-# types: mysql, mongodb, sqlite, nitrite, yaml
+# types: yaml, mysql, [mongodb, sqlite, nitrite]
 # default ports: 3306 (mysql), 27017 (mongodb)
-# (none of these settings apply to yaml)
 database:
   type: yaml
 
+  # (none of the following database settings apply to yaml)
   host: localhost
   port: 3306
 
@@ -18,11 +18,11 @@ database:
 # ECONOMY POOL SETTINGS
 # unlock-amount: total amount the players need to pay the pool to unlock a dimension
 nether:
-  enable: true
+  enable: true # ##############
   unlock-amount: 5000
 
 the_end:
-  enable: true
+  enable: true # ##################
   unlock-amount: 20000
 
 # PORTAL SETTINGS

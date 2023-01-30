@@ -2,6 +2,7 @@ package me.maurxce.unlockabledimensions;
 
 import me.maurxce.unlockabledimensions.managers.*;
 import me.maurxce.unlockabledimensions.services.Database;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -26,7 +27,7 @@ public final class Main extends JavaPlugin {
     private void checkDependencies() {
         if (!EconomyManager.setupEconomy()) {
             getLogger().severe("Couldn't find dependency: Vault");
-            getServer().getPluginManager().disablePlugin(this);
+            disablePlugin();
             return;
         }
 
@@ -45,5 +46,8 @@ public final class Main extends JavaPlugin {
 
     public DatabaseManager getDbManager() {
         return dbManager;
+    }
+    public void disablePlugin() {
+        Bukkit.getServer().getPluginManager().disablePlugin(this);
     }
 }

@@ -1,5 +1,7 @@
 package me.maurxce.unlockabledimensions.managers;
 
+import me.maurxce.unlockabledimensions.dao.MongoDB;
+import me.maurxce.unlockabledimensions.dao.MySQL;
 import me.maurxce.unlockabledimensions.dao.YAML;
 import me.maurxce.unlockabledimensions.services.Database;
 import org.bukkit.Bukkit;
@@ -16,6 +18,12 @@ public class DatabaseManager {
         switch (type.toUpperCase()) {
             case "YAML":
                 database = new YAML().connect();
+                break;
+            case "MYSQL":
+                database = new MySQL().connect();
+                break;
+            case "MONGODB":
+                database = new MongoDB().connect();
                 break;
             default:
                 Bukkit.getLogger().severe("Invalid database type: " + type);

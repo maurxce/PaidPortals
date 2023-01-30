@@ -7,7 +7,7 @@ public interface Database {
     interface Credentials {
         String TYPE = FileManager.getConfig().getString("database.type");
         String HOST = FileManager.getConfig().getString("database.host");
-        String PORT = FileManager.getConfig().getString("database.port");
+        int PORT = FileManager.getConfig().getInt("database.port");
         String NAME = FileManager.getConfig().getString("database.name");
         String USERNAME = FileManager.getConfig().getString("database.username");
         String PASSWORD = FileManager.getConfig().getString("database.password");
