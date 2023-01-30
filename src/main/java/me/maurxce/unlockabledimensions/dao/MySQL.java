@@ -8,6 +8,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import java.sql.*;
 
+/**
+ * @TODO: Test this
+ */
 public class MySQL implements Database {
 
     private final FileConfiguration config = FileManager.getConfig();

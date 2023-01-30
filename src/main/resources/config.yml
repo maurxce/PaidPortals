@@ -2,7 +2,7 @@
 #   by maurxce
 
 # DATABASE
-# types: yaml, mysql, [mongodb, sqlite, nitrite]
+# types: yaml, mysql, mongodb, [sqlite, nitrite]
 # default ports: 3306 (mysql), 27017 (mongodb)
 database:
   type: yaml
