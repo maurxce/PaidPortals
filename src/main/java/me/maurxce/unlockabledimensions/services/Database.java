@@ -16,16 +16,21 @@ public interface Database {
         String PASSWORD = FileManager.getConfig().getString("database.password");
     }
 
-    void connect() throws IOException, InvalidConfigurationException;
-    void disconnect() throws IOException;
+    Database connect();
+
+    void disconnect();
 
     Database getInstance();
 
     int getPaid();
+
     void setPaid(int amount);
+
     void addPaid(int amount);
 
     boolean isLocked(String dimension);
+
     void unlockDimension(String dimension);
+
     void lockDimension(String dimension);
 }

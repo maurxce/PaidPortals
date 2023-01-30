@@ -1,6 +1,8 @@
 package me.maurxce.unlockabledimensions.commands;
 
+import me.maurxce.unlockabledimensions.Main;
 import me.maurxce.unlockabledimensions.managers.FileManager;
+import me.maurxce.unlockabledimensions.services.Database;
 import me.maurxce.unlockabledimensions.utils.ChatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -10,12 +12,14 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 
 public class ResetPool implements CommandExecutor {
 
     private final FileConfiguration lang = FileManager.getLang();
-    private final FileConfiguration pool = FileManager.getPool();
+    //private final FileConfiguration pool = FileManager.getPool();
+    private Database database = Main.instance.getDbManager().getDatabase();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -26,7 +30,8 @@ public class ResetPool implements CommandExecutor {
             return true;
         }
 
-        pool.set("paid", 0);
+        //pool.set("paid", 0);
+        database.setPaid(0);
 
         try {
             FileManager.reloadFiles(true);

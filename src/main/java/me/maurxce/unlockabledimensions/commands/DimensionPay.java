@@ -1,7 +1,10 @@
 package me.maurxce.unlockabledimensions.commands;
 
+import me.maurxce.unlockabledimensions.Main;
+import me.maurxce.unlockabledimensions.managers.DatabaseManager;
 import me.maurxce.unlockabledimensions.managers.EconomyManager;
 import me.maurxce.unlockabledimensions.managers.FileManager;
+import me.maurxce.unlockabledimensions.services.Database;
 import me.maurxce.unlockabledimensions.utils.ChatUtils;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
@@ -23,7 +26,8 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
 
     private final FileConfiguration config = FileManager.getConfig();
     private final FileConfiguration lang = FileManager.getLang();
-    private final FileConfiguration pool = FileManager.getPool();
+    //private final FileConfiguration pool = FileManager.getPool();
+    private Database database = Main.instance.getDbManager().getDatabase();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -94,8 +98,9 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
     public void payIntoPool(Player player, int amount) {
         EconomyManager.withdraw(player, amount);
 
-        int alreadyPaid = pool.getInt("paid");
-        pool.set("paid", alreadyPaid + amount);
+        /*int alreadyPaid = pool.getInt("paid");
+        pool.set("paid", alreadyPaid + amount);*/
+        database.addPaid(amount);
 
         try {
             FileManager.reloadFiles(true);
@@ -116,18 +121,23 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
         String name = WordUtils.capitalizeFully(dimension.replace("_", " "));
         System.out.println(name);
 
-        boolean locked = pool.getBoolean(dimension + "-locked");
+        /*boolean locked = pool.getBoolean(dimension + "-locked");
         System.out.println(locked);
         int goal = config.getInt(dimension + ".unlock-amount");
-        System.out.println(goal);
+        System.out.println(goal);*/
 
-        if (locked && pool.getInt("paid") >= goal) {
+        int goal = config.getInt(dimension + ".unlock-amount");
+        boolean locked = database.isLocked(dimension);
+        boolean canUnlock = database.getPaid() >= goal;
+
+        if (locked && canUnlock) {
             String dimensionUnlocked = lang.getString("dimension-unlocked")
                     .replace("%dimension%", name);
 
             Bukkit.broadcastMessage(ChatUtils.translate(dimensionUnlocked));
 
-            pool.set(dimension + "-locked", false);
+            //pool.set(dimension + "-locked", false);
+            database.unlockDimension(dimension);
         }
     }
 

@@ -11,35 +11,33 @@ import java.io.IOException;
 
 public class YAML implements Database {
 
-    private final FileConfiguration database = new YamlConfiguration();
-    private final File file = new File(FileManager.getDataFolder(), "data/" + Credentials.NAME +".yml");
+    private FileConfiguration database = null;
+    private File file = null;
 
     @Override
-    public void connect() {
-        if (!file.exists()) {
-            FileManager.saveResource("data/" + Credentials.NAME + ".yml");
-            reload(false);
+    public Database connect() {
+        database = new YamlConfiguration();
+        file = new File(FileManager.getDataFolder(), "data/" + Credentials.NAME +".yml");
 
-            database.set("paid", 0);
-            database.set("nether-locked", true);
-            database.set("the_end-locked", true);
-            reload(true);
-
-            return;
-        }
+        if (!file.exists()) FileManager.saveResource("data/" + Credentials.NAME + ".yml");
 
         reload(false);
+        return this;
     }
 
     @Override
-    public void disconnect() throws IOException {
-        database.save(file);
-        database = null;
+    public void disconnect() {
+        try {
+            database.save(file);
+            database = null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public Database getInstance() {
-        return (Database) database;
+        return this;
     }
 
     @Override

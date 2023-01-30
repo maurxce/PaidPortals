@@ -1,20 +1,23 @@
 package me.maurxce.unlockabledimensions;
 
-import me.maurxce.unlockabledimensions.managers.CommandManager;
-import me.maurxce.unlockabledimensions.managers.EconomyManager;
-import me.maurxce.unlockabledimensions.managers.FileManager;
-import me.maurxce.unlockabledimensions.managers.PlaceholderManager;
+import me.maurxce.unlockabledimensions.managers.*;
+import me.maurxce.unlockabledimensions.services.Database;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
 
     public static Main instance;
+    DatabaseManager dbManager = null;
 
     @Override
     public void onEnable() {
         instance = this;
+        dbManager = new DatabaseManager();
 
         FileManager.loadFiles();
+
+        dbManager.setupDatabase();
+
         CommandManager.register();
 
         checkDependencies();
@@ -35,6 +38,12 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        dbManager.closeDatabase();
+
         instance = null;
+    }
+
+    public DatabaseManager getDbManager() {
+        return dbManager;
     }
 }
