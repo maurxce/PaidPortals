@@ -12,13 +12,11 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 
 public class ResetPool implements CommandExecutor {
 
     private final FileConfiguration lang = FileManager.getLang();
-    //private final FileConfiguration pool = FileManager.getPool();
     private Database database = Main.instance.getDbManager().getDatabase();
 
     @Override
@@ -30,7 +28,6 @@ public class ResetPool implements CommandExecutor {
             return true;
         }
 
-        //pool.set("paid", 0);
         database.setPaid(0);
 
         try {

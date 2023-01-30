@@ -1,7 +1,6 @@
 package me.maurxce.unlockabledimensions.commands;
 
 import me.maurxce.unlockabledimensions.Main;
-import me.maurxce.unlockabledimensions.managers.DatabaseManager;
 import me.maurxce.unlockabledimensions.managers.EconomyManager;
 import me.maurxce.unlockabledimensions.managers.FileManager;
 import me.maurxce.unlockabledimensions.services.Database;
