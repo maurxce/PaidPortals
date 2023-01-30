@@ -18,22 +18,23 @@ public class YAML implements Database {
     public void connect() {
         if (!file.exists()) {
             FileManager.saveResource("data/" + Credentials.NAME + ".yml");
-            reload(true);
+            reload(false);
 
             database.set("paid", 0);
             database.set("nether-locked", true);
             database.set("the_end-locked", true);
-            reload(false);
+            reload(true);
 
             return;
         }
 
-        reload(true);
+        reload(false);
     }
 
     @Override
     public void disconnect() throws IOException {
         database.save(file);
+        database = null;
     }
 
     @Override
@@ -49,13 +50,13 @@ public class YAML implements Database {
     @Override
     public void setPaid(int amount) {
         database.set("paid", amount);
-        reload(false);
+        reload(true);
     }
 
     @Override
     public void addPaid(int amount) {
         database.set("paid", getPaid() + amount);
-        reload(false);
+        reload(true);
     }
 
     @Override
@@ -66,18 +67,18 @@ public class YAML implements Database {
     @Override
     public void unlockDimension(String dimension) {
         database.set(dimension + "-locked", false);
-        reload(false);
+        reload(true);
     }
 
     @Override
     public void lockDimension(String dimension) {
         database.set(dimension + "-locked", true);
-        reload(false);
+        reload(true);
     }
 
-    private void reload(boolean forceReload) {
+    private void reload(boolean save) {
         try {
-            if (!forceReload) database.save(file);
+            if (save) database.save(file);
             database.load(file);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();

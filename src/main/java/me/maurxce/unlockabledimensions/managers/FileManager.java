@@ -29,7 +29,7 @@ public class FileManager {
         if (!poolFile.exists()) saveResource("data/pool.yml");
 
         try {
-            reloadFiles(true);
+            reloadFiles(false);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
@@ -39,8 +39,8 @@ public class FileManager {
         Main.instance.saveResource(resource, false);
     }
 
-    public static void reloadFiles(boolean forceReload) throws IOException, InvalidConfigurationException {
-        if (!forceReload) {
+    public static void reloadFiles(boolean save) throws IOException, InvalidConfigurationException {
+        if (save) {
             config.save(configFile);
             lang.save(langFile);
             pool.save(poolFile);

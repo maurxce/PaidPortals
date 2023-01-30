@@ -26,7 +26,7 @@ public class Reload implements CommandExecutor {
         }
 
         try {
-            FileManager.reloadFiles(true);
+            FileManager.reloadFiles(false);
 
             Bukkit.getLogger().warning("Reloaded config files");
             if (sender instanceof Player) {

@@ -78,7 +78,7 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
         if (enabledEnd) unlockDimension("the_end");
 
         try {
-            FileManager.reloadFiles(false);
+            FileManager.reloadFiles(true);
         } catch (IOException | InvalidConfigurationException e) {
             throw new RuntimeException(e);
         }
@@ -98,7 +98,7 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
         pool.set("paid", alreadyPaid + amount);
 
         try {
-            FileManager.reloadFiles(false);
+            FileManager.reloadFiles(true);
 
             String playerPaid = lang.getString("player-paid")
                     .replace("%username%", player.getName())
