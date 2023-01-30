@@ -1,9 +1,6 @@
 package me.maurxce.unlockabledimensions.services;
 
 import me.maurxce.unlockabledimensions.managers.FileManager;
-import org.bukkit.configuration.InvalidConfigurationException;
-
-import java.io.IOException;
 
 public interface Database {
 
@@ -26,23 +23,23 @@ public interface Database {
     int getPaid();
 
     /**
-     * @param amount
+     * @param amount set the amount of total money in the dimensions pool
      */
     void setPaid(int amount);
 
     /**
-     * @param amount
+     * @param amount add a certain amount to the dimensions pool
      */
     void addPaid(int amount);
 
     /**
-     * @param dimension
+     * @param dimension the dimension
      * @return whether dimension is locked or not
      */
     boolean isLocked(String dimension);
 
     /**
-     * @param dimension
+     * @param dimension the dimension
      */
     void unlockDimension(String dimension);
 }

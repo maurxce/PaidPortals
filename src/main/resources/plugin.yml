@@ -40,3 +40,7 @@ permissions:
   dimension.dimensionpay:
     description: permission to pay into all pools
     default: true
+
+  dimension.ignore:
+    description: Allows players to use portals even when it's locked for normal players
+    default: op

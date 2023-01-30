@@ -15,10 +15,10 @@ public final class Main extends JavaPlugin {
         dbManager = new DatabaseManager();
 
         FileManager.loadFiles();
-
         dbManager.setupDatabase();
 
         CommandManager.register();
+        EventManager.register();
 
         checkDependencies();
     }
