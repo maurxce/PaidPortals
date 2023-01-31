@@ -1,7 +1,7 @@
 package me.maurxce.unlockabledimensions.managers;
 
 import me.maurxce.unlockabledimensions.Main;
-import org.bukkit.Bukkit;
+import me.maurxce.unlockabledimensions.utils.RandomString;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -9,7 +9,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
-// remove pool.yml
 public class FileManager {
 
     private static final FileConfiguration config = new YamlConfiguration();
@@ -46,6 +45,15 @@ public class FileManager {
 
         config.load(configFile);
         lang.load(langFile);
+
+        generatePassword();
+    }
+
+    private static void generatePassword() throws IOException, InvalidConfigurationException {
+        if (config.get("database.password") == null) {
+            config.set("database.password", RandomString.generate());
+            reloadFiles(true);
+        }
     }
 
     public static FileConfiguration getConfig() {

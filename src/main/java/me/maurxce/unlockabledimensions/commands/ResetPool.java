@@ -14,6 +14,9 @@ import org.bukkit.entity.Player;
 
 import java.io.IOException;
 
+/**
+ * @TODO rework this, it doesn't work
+ */
 public class ResetPool implements CommandExecutor {
 
     private final FileConfiguration lang = FileManager.getLang();

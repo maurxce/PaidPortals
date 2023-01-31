@@ -7,9 +7,6 @@ import me.maurxce.unlockabledimensions.services.Database;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 
-/**
- * @TODO: add sqlite, nitrite
- */
 public class DatabaseManager {
 
     private static final FileConfiguration config = FileManager.getConfig();

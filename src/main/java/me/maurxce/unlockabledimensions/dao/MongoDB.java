@@ -11,9 +11,6 @@ import org.bson.Document;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 
-/**
- * @TODO: Test this
- */
 public class MongoDB implements Database {
 
     private final FileConfiguration config = FileManager.getConfig();
@@ -26,8 +23,8 @@ public class MongoDB implements Database {
         Bukkit.getLogger().info("Connecting to database...");
 
         MongoClientURI uri = new MongoClientURI(
-                String.format("mongodb://%s:%s@%s:%d",
-                        Credentials.USERNAME, Credentials.PASSWORD, Credentials.HOST, Credentials.PORT)
+                String.format("mongodb://%s:%s@%s:%d/%s",
+                        Credentials.USERNAME, Credentials.PASSWORD, Credentials.HOST, Credentials.PORT, Credentials.NAME)
         );
 
         client = new MongoClient(uri);
@@ -44,14 +41,16 @@ public class MongoDB implements Database {
         boolean netherEnabled = config.getBoolean("nether.enable");
         boolean endEnabled = config.getBoolean("the_end.enable");
 
-        Document query = new Document();
+        Document filter = new Document();
 
-        Document update = new Document("paid", 0);
-        update.append("nether_locked", netherEnabled);
-        update.append("the_end_locked", endEnabled);
+        Document query = new Document("paid", 0);
+        query.append("nether_locked", netherEnabled);
+        query.append("the_end_locked", endEnabled);
 
+        Document update = new Document("$set", query);
         UpdateOptions options = new UpdateOptions().upsert(true);
-        collection.updateOne(query, update, options);
+
+        collection.updateOne(filter, update, options);
     }
 
     @Override
@@ -76,7 +75,10 @@ public class MongoDB implements Database {
     public void setPaid(int amount) {
         Document filter = new Document("paid", getPaid());
         Document query = new Document("paid", amount);
-        collection.updateOne(filter, query);
+
+        Document update = new Document("$set", query);
+        UpdateOptions options = new UpdateOptions().upsert(true);
+        collection.updateOne(filter, update, options);
     }
 
     @Override
@@ -98,6 +100,9 @@ public class MongoDB implements Database {
     public void unlockDimension(String dimension) {
         Document filter = new Document(dimension + "_locked", isLocked(dimension));
         Document query = new Document(dimension + "_locked", false);
-        collection.updateOne(filter, query);
+
+        Document update = new Document("$set", query);
+        UpdateOptions options = new UpdateOptions().upsert(true);
+        collection.updateOne(filter, update, options);
     }
 }

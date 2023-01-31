@@ -8,9 +8,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import java.sql.*;
 
-/**
- * @TODO: Test this
- */
 public class MySQL implements Database {
 
     private final FileConfiguration config = FileManager.getConfig();
@@ -58,7 +55,9 @@ public class MySQL implements Database {
         boolean endEnabled = config.getBoolean("the_end.enable");
 
         Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> {
-            String query = "INSERT INTO dimensions VALUES (? ,?, ?);";
+            String query = "INSERT INTO dimensions " +
+                           "SELECT ?, ?, ? FROM DUAL " +
+                           "WHERE NOT EXISTS (SELECT * FROM dimensions);";
 
             try (PreparedStatement statement = connection.prepareStatement(query)) {
                 statement.setInt(1, 0);
@@ -126,7 +125,7 @@ public class MySQL implements Database {
         String query = "SELECT " + locked + " FROM dimensions;";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            ResultSet resultSet = statement.getResultSet();
+            ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) return resultSet.getBoolean(dimension + "_locked");
         } catch (SQLException e) {
