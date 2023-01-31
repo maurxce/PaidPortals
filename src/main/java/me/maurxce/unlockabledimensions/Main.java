@@ -2,6 +2,7 @@ package me.maurxce.unlockabledimensions;
 
 import me.maurxce.unlockabledimensions.managers.*;
 import me.maurxce.unlockabledimensions.services.Database;
+import me.maurxce.unlockabledimensions.utils.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -26,14 +27,14 @@ public final class Main extends JavaPlugin {
 
     private void checkDependencies() {
         if (!EconomyManager.setupEconomy()) {
-            getLogger().severe("Couldn't find dependency: Vault");
+            Logger.error("Couldn't find dependency: Vault");
             disablePlugin();
             return;
         }
 
         PlaceholderManager placeholderManager = new PlaceholderManager();
         if (!placeholderManager.setupPlaceholders()) {
-            getLogger().warning("Couldn't find dependency: PlaceholderAPI");
+            Logger.error("Couldn't find dependency: PlaceholderAPI");
             return;
         }
     }

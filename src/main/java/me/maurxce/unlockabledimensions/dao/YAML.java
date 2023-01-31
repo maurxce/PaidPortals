@@ -3,7 +3,7 @@ package me.maurxce.unlockabledimensions.dao;
 import me.maurxce.unlockabledimensions.Main;
 import me.maurxce.unlockabledimensions.managers.FileManager;
 import me.maurxce.unlockabledimensions.services.Database;
-import org.bukkit.Bukkit;
+import me.maurxce.unlockabledimensions.utils.Logger;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -19,7 +19,7 @@ public class YAML implements Database {
 
     @Override
     public Database connect() {
-        Bukkit.getLogger().info("Connecting to database...");
+        Logger.info("Connecting to database...");
 
         database = new YamlConfiguration();
         file = new File(FileManager.getDataFolder(), "data/unlockabledimensions.yml");
@@ -27,7 +27,7 @@ public class YAML implements Database {
         createFile();
         fillFile();
 
-        Bukkit.getLogger().info("Connection successful");
+        Logger.info("Connection successful");
         return this;
     }
 
@@ -48,13 +48,13 @@ public class YAML implements Database {
 
     @Override
     public void disconnect() {
-        Bukkit.getLogger().info("Disconnecting database...");
+        Logger.info("Disconnecting database");
 
         try {
             database.save(file);
             database = null;
         } catch (IOException e) {
-            Bukkit.getLogger().warning("Error disconnecting database");
+            Logger.warning("Error disconnecting database");
             e.printStackTrace();
         }
     }

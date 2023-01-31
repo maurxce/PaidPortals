@@ -7,8 +7,8 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.UpdateOptions;
 import me.maurxce.unlockabledimensions.managers.FileManager;
 import me.maurxce.unlockabledimensions.services.Database;
+import me.maurxce.unlockabledimensions.utils.Logger;
 import org.bson.Document;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class MongoDB implements Database {
@@ -20,7 +20,7 @@ public class MongoDB implements Database {
 
     @Override
     public Database connect() {
-        Bukkit.getLogger().info("Connecting to database...");
+        Logger.info("Connecting to database...");
 
         MongoClientURI uri = new MongoClientURI(
                 String.format("mongodb://%s:%s@%s:%d/%s",
@@ -33,7 +33,7 @@ public class MongoDB implements Database {
 
         fillCollection();
 
-        Bukkit.getLogger().info("Connection successful");
+        Logger.info("Connection successful");
         return this;
     }
 
@@ -55,7 +55,7 @@ public class MongoDB implements Database {
 
     @Override
     public void disconnect() {
-        Bukkit.getLogger().info("Disconnecting database...");
+        Logger.info("Disconnecting database...");
 
         client.close();
         client = null;

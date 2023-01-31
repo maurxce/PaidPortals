@@ -3,6 +3,7 @@ package me.maurxce.unlockabledimensions.dao;
 import me.maurxce.unlockabledimensions.Main;
 import me.maurxce.unlockabledimensions.managers.FileManager;
 import me.maurxce.unlockabledimensions.services.Database;
+import me.maurxce.unlockabledimensions.utils.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -15,13 +16,14 @@ public class MySQL implements Database {
 
     @Override
     public Database connect() {
+        Logger.info("Connecting to database...");
         String url = String.format("jdbc:mysql://%s:%d/%s", Credentials.HOST, Credentials.PORT, Credentials.NAME);
 
         try {
             connection = DriverManager.getConnection(url, Credentials.USERNAME, Credentials.PASSWORD);
-            Bukkit.getLogger().info("Connection successful");
+            Logger.info("Connection successful");
         } catch (SQLException e) {
-            Bukkit.getLogger().warning("Error connecting to database");
+            Logger.warning("Error connecting to database");
             e.printStackTrace();
 
             Main.instance.disablePlugin();
@@ -44,7 +46,7 @@ public class MySQL implements Database {
             try (PreparedStatement statement = connection.prepareStatement(query)) {
                 statement.executeUpdate();
             } catch (SQLException e) {
-                Bukkit.getLogger().warning("Error creating table");
+                Logger.warning("Error creating database table");
                 e.printStackTrace();
             }
         });
@@ -66,7 +68,7 @@ public class MySQL implements Database {
 
                 statement.executeUpdate();
             } catch (SQLException e) {
-                Bukkit.getLogger().warning("Error filling table");
+                Logger.warning("Error filling database table");
                 e.printStackTrace();
             }
         });
@@ -74,13 +76,13 @@ public class MySQL implements Database {
 
     @Override
     public void disconnect() {
-        Bukkit.getLogger().info("Disconnecting database...");
+        Logger.warning("Disconnecting database...");
 
         try {
             if (connection != null && !connection.isClosed()) connection.close();
             connection = null;
         } catch (SQLException e) {
-            Bukkit.getLogger().warning("Error disconnecting database");
+            Logger.warning("Error disconnecting database");
             e.printStackTrace();
         }
     }
@@ -94,7 +96,7 @@ public class MySQL implements Database {
 
             if (resultSet.next()) return resultSet.getInt("paid");
         } catch (SQLException e) {
-            Bukkit.getLogger().warning("Error getting value from table");
+            Logger.warning("Error getting value from database table");
             e.printStackTrace();
         }
 
@@ -109,7 +111,7 @@ public class MySQL implements Database {
             statement.setInt(1, amount);
             statement.executeUpdate();
         } catch (SQLException e) {
-            Bukkit.getLogger().warning("Error updating value in table");
+            Logger.warning("Error updating value in database table");
             e.printStackTrace();
         }
     }
@@ -129,7 +131,7 @@ public class MySQL implements Database {
 
             if (resultSet.next()) return resultSet.getBoolean(dimension + "_locked");
         } catch (SQLException e) {
-            Bukkit.getLogger().warning("Error getting value from table");
+            Logger.warning("Error getting value from database table");
             e.printStackTrace();
         }
 
@@ -144,7 +146,7 @@ public class MySQL implements Database {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.executeUpdate();
         } catch (SQLException e) {
-            Bukkit.getLogger().warning("Error updating value in table");
+            Logger.warning("Error updating value in database table");
             e.printStackTrace();
         }
     }

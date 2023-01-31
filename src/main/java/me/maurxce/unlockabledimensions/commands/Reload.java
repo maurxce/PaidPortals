@@ -2,7 +2,7 @@ package me.maurxce.unlockabledimensions.commands;
 
 import me.maurxce.unlockabledimensions.managers.FileManager;
 import me.maurxce.unlockabledimensions.utils.ChatUtils;
-import org.bukkit.Bukkit;
+import me.maurxce.unlockabledimensions.utils.Logger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -28,7 +28,7 @@ public class Reload implements CommandExecutor {
         try {
             FileManager.reloadFiles(false);
 
-            Bukkit.getLogger().warning("Reloaded config files");
+            Logger.warning("Reloaded config files");
             if (sender instanceof Player) {
                 String reloaded = lang.getString("successful-reload");
                 sender.sendMessage(ChatUtils.translate(reloaded));

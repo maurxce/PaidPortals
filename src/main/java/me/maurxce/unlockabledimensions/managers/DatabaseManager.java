@@ -4,7 +4,7 @@ import me.maurxce.unlockabledimensions.dao.MongoDB;
 import me.maurxce.unlockabledimensions.dao.MySQL;
 import me.maurxce.unlockabledimensions.dao.YAML;
 import me.maurxce.unlockabledimensions.services.Database;
-import org.bukkit.Bukkit;
+import me.maurxce.unlockabledimensions.utils.Logger;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class DatabaseManager {
@@ -26,7 +26,7 @@ public class DatabaseManager {
                 database = new MongoDB().connect();
                 break;
             default:
-                Bukkit.getLogger().severe("Invalid database type: " + type);
+                Logger.error("Invalid database type: " + type);
                 break;
         }
     }

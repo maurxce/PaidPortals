@@ -4,7 +4,7 @@ import me.maurxce.unlockabledimensions.Main;
 import me.maurxce.unlockabledimensions.managers.FileManager;
 import me.maurxce.unlockabledimensions.services.Database;
 import me.maurxce.unlockabledimensions.utils.ChatUtils;
-import org.bukkit.Bukkit;
+import me.maurxce.unlockabledimensions.utils.Logger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -36,7 +36,7 @@ public class ResetPool implements CommandExecutor {
         try {
             FileManager.reloadFiles(true);
 
-            Bukkit.getLogger().warning("Reset dimensions pool");
+            Logger.warning("Reset dimensions pool");
             if (sender instanceof Player) {
                 String reloaded = lang.getString("successful-reset");
                 sender.sendMessage(ChatUtils.translate(reloaded));
