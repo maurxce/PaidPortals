@@ -11,12 +11,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerPortalEvent;
 
-public class PlayerPortal implements Listener {
+public class PortalEnter implements Listener {
 
     private final FileConfiguration config = FileManager.getConfig();
     private final FileConfiguration lang = FileManager.getLang();
 
-    private final Database database = Main.instance.getDbManager().getDatabase();
+    private final Database database = Main.instance.getDatabase();
 
     String worldName = Bukkit.getServer().getWorlds().get(0).getName();
 

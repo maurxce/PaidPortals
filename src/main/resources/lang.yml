@@ -11,3 +11,6 @@ dimension-unlocked: "&5&l[UD] &dUnlocked dimension &5&l%dimension%" # %dimension
 
 portal-creation: "&5&l[UD] &dSorry! Portal creation is currently disabled."
 portal-enter: "&5&l[UD] &dSorry! This dimension isn't unlocked yet."
+
+placeholder-dimension-locked: "&c&lLocked"
+placeholder-dimension-unlocked: "&a&lUnlocked"

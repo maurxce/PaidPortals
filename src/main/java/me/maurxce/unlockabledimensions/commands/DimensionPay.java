@@ -25,7 +25,7 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
 
     private final FileConfiguration config = FileManager.getConfig();
     private final FileConfiguration lang = FileManager.getLang();
-    private Database database = Main.instance.getDbManager().getDatabase();
+    private Database database = Main.instance.getDatabase();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

@@ -31,7 +31,8 @@ public final class Main extends JavaPlugin {
             return;
         }
 
-        if (!PlaceholderManager.setupPlaceholders()) {
+        PlaceholderManager placeholderManager = new PlaceholderManager();
+        if (!placeholderManager.setupPlaceholders()) {
             getLogger().warning("Couldn't find dependency: PlaceholderAPI");
             return;
         }
@@ -44,8 +45,8 @@ public final class Main extends JavaPlugin {
         instance = null;
     }
 
-    public DatabaseManager getDbManager() {
-        return dbManager;
+    public Database getDatabase() {
+        return dbManager.getDatabase();
     }
     public void disablePlugin() {
         Bukkit.getServer().getPluginManager().disablePlugin(this);

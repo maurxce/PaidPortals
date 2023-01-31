@@ -20,7 +20,7 @@ import java.io.IOException;
 public class ResetPool implements CommandExecutor {
 
     private final FileConfiguration lang = FileManager.getLang();
-    private Database database = Main.instance.getDbManager().getDatabase();
+    private Database database = Main.instance.getDatabase();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
