@@ -39,6 +39,13 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
             return true;
         }
 
+        if (allDimensionsUnlocked()) {
+            String alreadyUnlocked = lang.getString("dimensions-already-unlocked");
+
+            player.sendMessage(ChatUtils.translate(alreadyUnlocked));
+            return true;
+        }
+
         if (args.length < 1) {
             String missingArgs = lang.getString("not-enough-args")
                     .replace("%usage%", getUsage(command, label));
@@ -86,6 +93,13 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
         }
 
         return true;
+    }
+
+    private boolean allDimensionsUnlocked() {
+        boolean netherLocked = database.isLocked("nether");
+        boolean endLocked = database.isLocked("the_end");
+
+        return !netherLocked && !endLocked;
     }
 
     public String getUsage(Command command, String label) {
