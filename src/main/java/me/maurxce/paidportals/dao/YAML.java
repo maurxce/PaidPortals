@@ -20,7 +20,6 @@ public class YAML implements Database {
 
     @Override
     public Database connect() {
-        //Logger.info("Connecting to database...");
         Logger.info(db.getString("connect"));
 
         database = new YamlConfiguration();
@@ -29,7 +28,6 @@ public class YAML implements Database {
         createFile();
         fillFile();
 
-        //Logger.info("Connection successful");
         Logger.info(db.getString("connected"));
         return this;
     }
@@ -51,14 +49,12 @@ public class YAML implements Database {
 
     @Override
     public void disconnect() {
-        //Logger.info("Disconnecting database");
         Logger.info(db.getString("disconnect"));
 
         try {
             database.save(file);
             database = null;
         } catch (IOException e) {
-            //Logger.warning("Error disconnecting database");
             Logger.warning(db.getString("error-disconnect"));
             e.printStackTrace();
         }

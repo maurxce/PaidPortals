@@ -35,7 +35,6 @@ public class MongoDB implements Database {
 
         fillCollection();
 
-        //Logger.info("Connection successful");
         Logger.info(db.getString("connected"));
         return this;
     }
@@ -58,7 +57,6 @@ public class MongoDB implements Database {
 
     @Override
     public void disconnect() {
-        //Logger.info("Disconnecting database...");
         Logger.info(db.getString("disconnect"));
 
         client.close();

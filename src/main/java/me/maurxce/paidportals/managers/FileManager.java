@@ -68,7 +68,7 @@ public class FileManager {
     }
 
     public static FileConfiguration getDbMessages() {
-        InputStream messageStream= Main.instance.getClass().getClassLoader().getResourceAsStream("db_messages");
+        InputStream messageStream= Main.instance.getClass().getClassLoader().getResourceAsStream("db_messages.yml");
         InputStreamReader messageFile = new InputStreamReader(messageStream);
 
         try {
