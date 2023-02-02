@@ -28,6 +28,12 @@ commands:
       - dimensionpay
     permission: paidportals.dimensionpay
 
+  paidportals:
+    description: info command
+    usage: /<command>
+    aliases:
+      - pp
+
 permissions:
   paidportals.reload:
     description: permission to reload config files
