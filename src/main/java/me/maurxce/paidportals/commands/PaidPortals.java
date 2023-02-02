@@ -20,7 +20,7 @@ public class PaidPortals implements CommandExecutor {
         String version = Main.instance.getDescription().getVersion();
 
         TextComponent response = new TextComponent(
-                ChatUtils.translate("&5&l[PaidPortals] &d" + author + " - " + version)
+                ChatUtils.translate("&5&l[PaidPortals} &dby" + author + " - v" + version)
         );
 
         response.setClickEvent(
@@ -28,6 +28,6 @@ public class PaidPortals implements CommandExecutor {
         );
 
         player.spigot().sendMessage(response);
-        return false;
+        return true;
     }
 }
