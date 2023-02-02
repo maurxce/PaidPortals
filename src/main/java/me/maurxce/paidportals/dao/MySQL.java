@@ -130,13 +130,16 @@ public class MySQL implements Database {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
 
-            if (resultSet.next()) return resultSet.getBoolean(dimension + "_locked");
+            if (resultSet.next()) {
+                return resultSet.getBoolean(dimension + "_locked")
+                        && config.getBoolean(dimension + ".enable");
+            }
         } catch (SQLException e) {
             Logger.warning(db.getString("error.get"));
             e.printStackTrace();
         }
 
-        return true;
+        return config.getBoolean(dimension + ".enable");
     }
 
     @Override

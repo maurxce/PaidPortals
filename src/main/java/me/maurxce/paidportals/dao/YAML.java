@@ -78,7 +78,8 @@ public class YAML implements Database {
 
     @Override
     public boolean isLocked(String dimension) {
-        return database.getBoolean(dimension + "-locked");
+        return database.getBoolean(dimension + "-locked")
+                && config.getBoolean(dimension + ".enable");
     }
 
     @Override

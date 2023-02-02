@@ -27,7 +27,7 @@ public class PortalCreate implements Listener {
 
     private boolean isAllowed(Player player) {
         boolean allowCreate = config.getBoolean("player-portal-create");
-        boolean hasPermission = player.hasPermission("dimensions.ignore");
+        boolean hasPermission = player.hasPermission("paidportals.ignore");
 
         return allowCreate || hasPermission || player.isOp();
     }

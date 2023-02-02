@@ -92,10 +92,13 @@ public class MongoDB implements Database {
     public boolean isLocked(String dimension) {
         FindIterable<Document> result = collection.find();
         for (Document doc : result) {
-            if (doc.containsKey(dimension + "_locked")) return doc.getBoolean(dimension + "_locked");
+            if (doc.containsKey(dimension + "_locked")) {
+                return doc.getBoolean(dimension + "_locked")
+                        && config.getBoolean(dimension + ".enable");
+            }
         }
 
-        return true;
+        return config.getBoolean(dimension + ".enable");
     }
 
     @Override

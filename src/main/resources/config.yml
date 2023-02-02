@@ -18,11 +18,11 @@ database:
 # ECONOMY POOL SETTINGS
 # unlock-amount: total amount the players need to pay the pool to unlock a dimension
 nether:
-  enable: true # ##############
+  enable: true
   unlock-amount: 5000
 
 the_end:
-  enable: true # ##################
+  enable: true
   unlock-amount: 20000
 
 # PORTAL SETTINGS
