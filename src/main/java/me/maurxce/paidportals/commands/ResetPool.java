@@ -8,19 +8,13 @@ import me.maurxce.paidportals.utils.Logger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import java.io.IOException;
-
-/**
- * @TODO rework this, it doesn't work
- */
 public class ResetPool implements CommandExecutor {
 
     private final FileConfiguration lang = FileManager.getLang();
-    private Database database = Main.instance.getDatabase();
+    private final Database database = Main.instance.getDatabase();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -33,16 +27,10 @@ public class ResetPool implements CommandExecutor {
 
         database.setPaid(0);
 
-        try {
-            FileManager.reloadFiles(true);
-
-            Logger.warning("Reset dimensions pool");
-            if (sender instanceof Player) {
-                String reloaded = lang.getString("successful-reset");
-                sender.sendMessage(ChatUtils.translate(reloaded));
-            }
-        } catch (IOException | InvalidConfigurationException e) {
-            throw new RuntimeException(e);
+        Logger.warning("Reset dimensions pool");
+        if (sender instanceof Player) {
+            String reloaded = lang.getString("successful-reset");
+            sender.sendMessage(ChatUtils.translate(reloaded));
         }
 
         return true;

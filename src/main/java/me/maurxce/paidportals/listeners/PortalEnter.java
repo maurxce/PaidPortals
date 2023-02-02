@@ -31,6 +31,7 @@ public class PortalEnter implements Listener {
 
             player.sendMessage(ChatUtils.translate(portalEnter));
             e.setCancelled(true);
+            return;
         }
     }
 

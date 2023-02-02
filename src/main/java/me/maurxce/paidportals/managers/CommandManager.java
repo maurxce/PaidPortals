@@ -4,6 +4,7 @@ import me.maurxce.paidportals.Main;
 import me.maurxce.paidportals.commands.DimensionPay;
 import me.maurxce.paidportals.commands.PaidPortals;
 import me.maurxce.paidportals.commands.Reload;
+import me.maurxce.paidportals.commands.ResetPool;
 
 public class CommandManager {
 
@@ -11,7 +12,7 @@ public class CommandManager {
 
     public static void register() {
         main.getCommand("reload").setExecutor(new Reload());
-        main.getCommand("resetpool").setExecutor(new Reload());
+        main.getCommand("resetpool").setExecutor(new ResetPool());
 
         main.getCommand("dpay").setExecutor(new DimensionPay());
 

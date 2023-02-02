@@ -17,7 +17,6 @@ public class MongoDB implements Database {
     private final FileConfiguration db = FileManager.getDbMessages();
 
     private MongoClient client = null;
-    private MongoDatabase database = null;
     private MongoCollection<Document> collection = null;
 
     @Override
@@ -30,7 +29,7 @@ public class MongoDB implements Database {
         );
 
         client = new MongoClient(uri);
-        database = client.getDatabase(Credentials.NAME);
+        MongoDatabase database = client.getDatabase(Credentials.NAME);
         collection = database.getCollection("dimensions");
 
         fillCollection();

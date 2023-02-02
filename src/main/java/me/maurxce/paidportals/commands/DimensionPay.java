@@ -25,7 +25,7 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
 
     private final FileConfiguration config = FileManager.getConfig();
     private final FileConfiguration lang = FileManager.getLang();
-    private Database database = Main.instance.getDatabase();
+    private final Database database = Main.instance.getDatabase();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -110,17 +110,12 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
         EconomyManager.withdraw(player, amount);
         database.addPaid(amount);
 
-        try {
-            FileManager.reloadFiles(true);
 
-            String playerPaid = lang.getString("player-paid")
-                    .replace("%username%", player.getName())
-                    .replace("%amount%", String.valueOf(amount));
+        String playerPaid = lang.getString("player-paid")
+                .replace("%username%", player.getName())
+                .replace("%amount%", String.valueOf(amount));
 
-            Bukkit.broadcastMessage(ChatUtils.translate(playerPaid));
-        } catch (IOException | InvalidConfigurationException e) {
-            throw new RuntimeException(e);
-        }
+        Bukkit.broadcastMessage(ChatUtils.translate(playerPaid));
     }
 
     public void unlockDimension(String dimension) {

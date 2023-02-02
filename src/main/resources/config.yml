@@ -11,8 +11,8 @@ database:
   host: localhost
   port: 3306
 
-  name: unlockabledimensions
-  username: dimension_user
+  name: paidportals
+  username: portal_user
   password:
 
 # ECONOMY POOL SETTINGS
