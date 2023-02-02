@@ -1,8 +1,8 @@
-package me.maurxce.unlockabledimensions.managers;
+package me.maurxce.paidportals.managers;
 
-import me.maurxce.unlockabledimensions.Main;
-import me.maurxce.unlockabledimensions.listeners.PortalEnter;
-import me.maurxce.unlockabledimensions.listeners.PortalCreate;
+import me.maurxce.paidportals.Main;
+import me.maurxce.paidportals.listeners.PortalEnter;
+import me.maurxce.paidportals.listeners.PortalCreate;
 import org.bukkit.plugin.PluginManager;
 
 public class EventManager {

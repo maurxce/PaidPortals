@@ -1,4 +1,4 @@
-package me.maurxce.unlockabledimensions.managers;
+package me.maurxce.paidportals.managers;
 
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;

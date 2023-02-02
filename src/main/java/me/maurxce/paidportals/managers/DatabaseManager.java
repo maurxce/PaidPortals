@@ -1,10 +1,10 @@
-package me.maurxce.unlockabledimensions.managers;
+package me.maurxce.paidportals.managers;
 
-import me.maurxce.unlockabledimensions.dao.MongoDB;
-import me.maurxce.unlockabledimensions.dao.MySQL;
-import me.maurxce.unlockabledimensions.dao.YAML;
-import me.maurxce.unlockabledimensions.services.Database;
-import me.maurxce.unlockabledimensions.utils.Logger;
+import me.maurxce.paidportals.dao.MongoDB;
+import me.maurxce.paidportals.dao.MySQL;
+import me.maurxce.paidportals.dao.YAML;
+import me.maurxce.paidportals.services.Database;
+import me.maurxce.paidportals.utils.Logger;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class DatabaseManager {

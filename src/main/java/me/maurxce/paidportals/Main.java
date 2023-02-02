@@ -1,15 +1,16 @@
-package me.maurxce.unlockabledimensions;
+package me.maurxce.paidportals;
 
-import me.maurxce.unlockabledimensions.managers.*;
-import me.maurxce.unlockabledimensions.services.Database;
-import me.maurxce.unlockabledimensions.utils.Logger;
+import me.maurxce.paidportals.managers.*;
+import me.maurxce.paidportals.services.Database;
+import me.maurxce.paidportals.utils.Logger;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
 
     public static Main instance;
-    DatabaseManager dbManager = null;
+    private DatabaseManager dbManager = null;
 
     @Override
     public void onEnable() {
@@ -23,6 +24,13 @@ public final class Main extends JavaPlugin {
         EventManager.register();
 
         checkDependencies();
+
+        // bStats
+        /**
+         * @TODO move somewhere else
+         */
+        int pluginId = 17603;
+        Metrics metrics = new Metrics(this, pluginId);
     }
 
     private void checkDependencies() {
@@ -49,6 +57,7 @@ public final class Main extends JavaPlugin {
     public Database getDatabase() {
         return dbManager.getDatabase();
     }
+
     public void disablePlugin() {
         Bukkit.getServer().getPluginManager().disablePlugin(this);
     }

@@ -1,18 +1,21 @@
-package me.maurxce.unlockabledimensions.managers;
+package me.maurxce.paidportals.managers;
 
-import me.maurxce.unlockabledimensions.Main;
-import me.maurxce.unlockabledimensions.utils.RandomString;
+import me.maurxce.paidportals.Main;
+import me.maurxce.paidportals.utils.RandomString;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class FileManager {
 
     private static final FileConfiguration config = new YamlConfiguration();
     private static final FileConfiguration lang = new YamlConfiguration();
+    private static final FileConfiguration dbMessages = new YamlConfiguration();
 
     private static final File configFile = new File(getDataFolder(), "config.yml");
     private static final File langFile = new File(getDataFolder(), "lang.yml");
@@ -62,5 +65,18 @@ public class FileManager {
 
     public static FileConfiguration getLang() {
         return lang;
+    }
+
+    public static FileConfiguration getDbMessages() {
+        InputStream messageStream= Main.instance.getClass().getClassLoader().getResourceAsStream("db_messages");
+        InputStreamReader messageFile = new InputStreamReader(messageStream);
+
+        try {
+            dbMessages.load(messageFile);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+
+        return dbMessages;
     }
 }

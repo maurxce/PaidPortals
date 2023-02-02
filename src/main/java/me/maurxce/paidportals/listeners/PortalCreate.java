@@ -1,7 +1,7 @@
-package me.maurxce.unlockabledimensions.listeners;
+package me.maurxce.paidportals.listeners;
 
-import me.maurxce.unlockabledimensions.managers.FileManager;
-import me.maurxce.unlockabledimensions.utils.ChatUtils;
+import me.maurxce.paidportals.managers.FileManager;
+import me.maurxce.paidportals.utils.ChatUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

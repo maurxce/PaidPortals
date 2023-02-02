@@ -1,26 +1,28 @@
-package me.maurxce.unlockabledimensions.dao;
+package me.maurxce.paidportals.dao;
 
 import com.mongodb.*;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.UpdateOptions;
-import me.maurxce.unlockabledimensions.managers.FileManager;
-import me.maurxce.unlockabledimensions.services.Database;
-import me.maurxce.unlockabledimensions.utils.Logger;
+import me.maurxce.paidportals.managers.FileManager;
+import me.maurxce.paidportals.services.Database;
+import me.maurxce.paidportals.utils.Logger;
 import org.bson.Document;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class MongoDB implements Database {
 
     private final FileConfiguration config = FileManager.getConfig();
+    private final FileConfiguration db = FileManager.getDbMessages();
+
     private MongoClient client = null;
     private MongoDatabase database = null;
     private MongoCollection<Document> collection = null;
 
     @Override
     public Database connect() {
-        Logger.info("Connecting to database...");
+        Logger.info(db.getString("connect"));
 
         MongoClientURI uri = new MongoClientURI(
                 String.format("mongodb://%s:%s@%s:%d/%s",
@@ -33,7 +35,8 @@ public class MongoDB implements Database {
 
         fillCollection();
 
-        Logger.info("Connection successful");
+        //Logger.info("Connection successful");
+        Logger.info(db.getString("connected"));
         return this;
     }
 
@@ -55,7 +58,8 @@ public class MongoDB implements Database {
 
     @Override
     public void disconnect() {
-        Logger.info("Disconnecting database...");
+        //Logger.info("Disconnecting database...");
+        Logger.info(db.getString("disconnect"));
 
         client.close();
         client = null;

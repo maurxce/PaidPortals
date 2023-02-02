@@ -1,9 +1,9 @@
-package me.maurxce.unlockabledimensions.dao;
+package me.maurxce.paidportals.dao;
 
-import me.maurxce.unlockabledimensions.Main;
-import me.maurxce.unlockabledimensions.managers.FileManager;
-import me.maurxce.unlockabledimensions.services.Database;
-import me.maurxce.unlockabledimensions.utils.Logger;
+import me.maurxce.paidportals.Main;
+import me.maurxce.paidportals.managers.FileManager;
+import me.maurxce.paidportals.services.Database;
+import me.maurxce.paidportals.utils.Logger;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -14,12 +14,14 @@ import java.io.IOException;
 public class YAML implements Database {
 
     private final FileConfiguration config = FileManager.getConfig();
+    private final FileConfiguration db = FileManager.getDbMessages();
     private FileConfiguration database = null;
     private File file = null;
 
     @Override
     public Database connect() {
-        Logger.info("Connecting to database...");
+        //Logger.info("Connecting to database...");
+        Logger.info(db.getString("connect"));
 
         database = new YamlConfiguration();
         file = new File(FileManager.getDataFolder(), "data/unlockabledimensions.yml");
@@ -27,7 +29,8 @@ public class YAML implements Database {
         createFile();
         fillFile();
 
-        Logger.info("Connection successful");
+        //Logger.info("Connection successful");
+        Logger.info(db.getString("connected"));
         return this;
     }
 
@@ -48,13 +51,15 @@ public class YAML implements Database {
 
     @Override
     public void disconnect() {
-        Logger.info("Disconnecting database");
+        //Logger.info("Disconnecting database");
+        Logger.info(db.getString("disconnect"));
 
         try {
             database.save(file);
             database = null;
         } catch (IOException e) {
-            Logger.warning("Error disconnecting database");
+            //Logger.warning("Error disconnecting database");
+            Logger.warning(db.getString("error-disconnect"));
             e.printStackTrace();
         }
     }

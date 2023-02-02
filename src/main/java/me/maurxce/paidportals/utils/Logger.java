@@ -1,6 +1,6 @@
-package me.maurxce.unlockabledimensions.utils;
+package me.maurxce.paidportals.utils;
 
-import me.maurxce.unlockabledimensions.Main;
+import me.maurxce.paidportals.Main;
 import org.bukkit.Bukkit;
 
 public class Logger {

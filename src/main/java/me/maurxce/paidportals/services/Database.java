@@ -1,6 +1,6 @@
-package me.maurxce.unlockabledimensions.services;
+package me.maurxce.paidportals.services;
 
-import me.maurxce.unlockabledimensions.managers.FileManager;
+import me.maurxce.paidportals.managers.FileManager;
 
 public interface Database {
 

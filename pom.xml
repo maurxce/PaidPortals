@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.maurxce</groupId>
-    <artifactId>UnlockableDimensions</artifactId>
+    <artifactId>PaidPortals</artifactId>
     <version>1.0-DEV</version>
     <packaging>jar</packaging>
 
-    <name>UnlockableDimensions</name>
+    <name>PaidPortals</name>
 
     <description>A plugin which locks dimensions until a certain amount of money was paid by the players (in a pool)
     </description>
@@ -34,6 +34,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
+                <configuration>
+                    <relocations>
+                        <relocation>
+                            <pattern>org.bstats</pattern>
+                            <shadedPattern>me.maurxce.paidportals</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -102,6 +110,12 @@
             <artifactId>placeholderapi</artifactId>
             <version>2.11.2</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>3.0.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

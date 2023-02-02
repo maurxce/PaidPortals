@@ -1,4 +1,4 @@
-package me.maurxce.unlockabledimensions.utils;
+package me.maurxce.paidportals.utils;
 
 import org.bukkit.ChatColor;
 

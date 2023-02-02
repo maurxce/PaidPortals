@@ -1,9 +1,9 @@
-package me.maurxce.unlockabledimensions.listeners;
+package me.maurxce.paidportals.listeners;
 
-import me.maurxce.unlockabledimensions.Main;
-import me.maurxce.unlockabledimensions.managers.FileManager;
-import me.maurxce.unlockabledimensions.services.Database;
-import me.maurxce.unlockabledimensions.utils.ChatUtils;
+import me.maurxce.paidportals.Main;
+import me.maurxce.paidportals.managers.FileManager;
+import me.maurxce.paidportals.services.Database;
+import me.maurxce.paidportals.utils.ChatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -38,7 +38,7 @@ public class PortalEnter implements Listener {
         dimension = dimension.replace(worldName + "_", "");
 
         boolean allowedEnter = config.getBoolean("player-portal-enter");
-        boolean hasPermission = player.hasPermission("dimensions.ignore");
+        boolean hasPermission = player.hasPermission("paidportals.ignore");
 
         return allowedEnter || !database.isLocked(dimension) || hasPermission || player.isOp();
     }

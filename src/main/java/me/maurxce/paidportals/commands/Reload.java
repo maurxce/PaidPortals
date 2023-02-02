@@ -1,10 +1,8 @@
-package me.maurxce.unlockabledimensions.commands;
+package me.maurxce.paidportals.commands;
 
-import me.maurxce.unlockabledimensions.Main;
-import me.maurxce.unlockabledimensions.managers.FileManager;
-import me.maurxce.unlockabledimensions.services.Database;
-import me.maurxce.unlockabledimensions.utils.ChatUtils;
-import me.maurxce.unlockabledimensions.utils.Logger;
+import me.maurxce.paidportals.managers.FileManager;
+import me.maurxce.paidportals.utils.ChatUtils;
+import me.maurxce.paidportals.utils.Logger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,31 +12,25 @@ import org.bukkit.entity.Player;
 
 import java.io.IOException;
 
-/**
- * @TODO rework this, it doesn't work
- */
-public class ResetPool implements CommandExecutor {
+public class Reload implements CommandExecutor {
 
     private final FileConfiguration lang = FileManager.getLang();
-    private Database database = Main.instance.getDatabase();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player && !sender.hasPermission("dimension.reload")) {
+        if (sender instanceof Player && !sender.hasPermission("paidportals.reload")) {
             String noPermission = lang.getString("no-permission");
 
             sender.sendMessage(ChatUtils.translate(noPermission));
             return true;
         }
 
-        database.setPaid(0);
-
         try {
-            FileManager.reloadFiles(true);
+            FileManager.reloadFiles(false);
 
-            Logger.warning("Reset dimensions pool");
+            Logger.warning("Reloaded config files");
             if (sender instanceof Player) {
-                String reloaded = lang.getString("successful-reset");
+                String reloaded = lang.getString("successful-reload");
                 sender.sendMessage(ChatUtils.translate(reloaded));
             }
         } catch (IOException | InvalidConfigurationException e) {

@@ -1,10 +1,10 @@
-package me.maurxce.unlockabledimensions.commands;
+package me.maurxce.paidportals.commands;
 
-import me.maurxce.unlockabledimensions.Main;
-import me.maurxce.unlockabledimensions.managers.EconomyManager;
-import me.maurxce.unlockabledimensions.managers.FileManager;
-import me.maurxce.unlockabledimensions.services.Database;
-import me.maurxce.unlockabledimensions.utils.ChatUtils;
+import me.maurxce.paidportals.Main;
+import me.maurxce.paidportals.managers.EconomyManager;
+import me.maurxce.paidportals.managers.FileManager;
+import me.maurxce.paidportals.services.Database;
+import me.maurxce.paidportals.utils.ChatUtils;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -32,7 +32,7 @@ public class DimensionPay implements CommandExecutor, TabCompleter {
         if (!(sender instanceof Player)) return true;
         Player player = (Player) sender;
 
-        if (!player.hasPermission("dimension.dimensionpay")) {
+        if (!player.hasPermission("paidportals.dimensionpay")) {
             String noPermission = lang.getString("no-permission");
 
             player.sendMessage(ChatUtils.translate(noPermission));

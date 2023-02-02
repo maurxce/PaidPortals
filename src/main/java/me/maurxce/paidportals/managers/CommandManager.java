@@ -1,8 +1,8 @@
-package me.maurxce.unlockabledimensions.managers;
+package me.maurxce.paidportals.managers;
 
-import me.maurxce.unlockabledimensions.Main;
-import me.maurxce.unlockabledimensions.commands.DimensionPay;
-import me.maurxce.unlockabledimensions.commands.Reload;
+import me.maurxce.paidportals.Main;
+import me.maurxce.paidportals.commands.DimensionPay;
+import me.maurxce.paidportals.commands.Reload;
 
 public class CommandManager {
 
