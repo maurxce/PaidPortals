@@ -3,7 +3,6 @@ package me.maurxce.paidportals;
 import me.maurxce.paidportals.managers.*;
 import me.maurxce.paidportals.services.Database;
 import me.maurxce.paidportals.utils.Logger;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,14 +22,9 @@ public final class Main extends JavaPlugin {
         CommandManager.register();
         EventManager.register();
 
-        checkDependencies();
+        MetricsManager.enable();
 
-        // bStats
-        /**
-         * @TODO move somewhere else
-         */
-        int pluginId = 17603;
-        Metrics metrics = new Metrics(this, pluginId);
+        checkDependencies();
     }
 
     private void checkDependencies() {

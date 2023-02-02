@@ -1,6 +1,9 @@
 #   UnlockableDimensions
 #   by maurxce
 
+# METRICS (bStats)
+metrics: true
+
 # DATABASE
 # types: mysql, mongodb, yaml
 # default ports: 3306 (mysql), 27017 (mongodb)
