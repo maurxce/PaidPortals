@@ -21,7 +21,7 @@ commands:
     permission: paidportals.reset
 
   dpay:
-    description: universal command to pay for a specific dimension pool
+    description: pay a specific amount of money into the dimensions pool
     usage: /<command> [amount]
     aliases:
       - dimensionpool
@@ -40,7 +40,7 @@ permissions:
     default: op
 
   paidportals.resetpool:
-    description: permission to reset a specific dimension pool
+    description: permission to reset the dimension pool
     default: op
 
   paidportals.dimensionpay:
