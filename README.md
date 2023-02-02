@@ -14,7 +14,7 @@ to the Nether and End dimensions.
 - [Placeholders](#placeholders)
 - [Dependencies](#depend)
 - [Guides](#guide)
-  - [Database](#db) #mysql, mongodb, yaml
+  - [Database](#db)
 - [How to contact me](#contact)
 
 ### <a name="ver">Versions</a>
