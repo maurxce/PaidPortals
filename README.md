@@ -4,6 +4,8 @@ Experience a new level of community cooperation with this Minecraft plugin,
 where players must pool their resources using Vault economy to unlock access
 to the Nether and End dimensions.
 
+Note: if you're upgrading from 1.0 to 1.1, please make sure to reset your `lang.yml`!
+
 ## Table of Contents
 
 - [Versions](#ver)
@@ -14,12 +16,12 @@ to the Nether and End dimensions.
 - [Placeholders](#placeholders)
 - [Dependencies](#depend)
 - [Guides](#guide)
-  - [Database](#db) #mysql, mongodb, yaml
+  - [Database](#db)
 - [How to contact me](#contact)
 
 ### <a name="ver">Versions</a>
 
-As of v1.0, this plugin was written for Spigot 1.19.3 \
+As of v1.1, this plugin was written for Spigot 1.19.3 \
 I'm planning to add multiversion support in the future
 
 ### <a name="setup">Setup</a>
@@ -73,6 +75,7 @@ For information on database setup, please see the [Database Guide](#db)
 |-------------|-----------|-----------------------------|--------------------------------------------------------|
 | /reload     | -         | -                           | Reload the config                                      |
 | /resetpool  | -         | -                           | Reset the money pool                                   |
+| /viewpool   | -         | -                           | View the money pool                                    |
 | /dpay       | [amount]  | dimensionpool, dimensionpay | Pay a certain amount of money into the dimensions pool |
 
 ### <a name="perms">Permissions</a>
@@ -82,6 +85,7 @@ For information on database setup, please see the [Database Guide](#db)
 | paidportals.reload       | OP       | Permission to use `/reload`                                                 |
 | paidportals.resetpool    | OP       | Permission to use `/resetpool`                                              |
 | paidportals.ignore       | OP       | Allows players to use portals, even when its still locked for everyone else |
+| paidportals.viewpool     | Everyone | Permission to use `/viewpool`                                               |
 | paidportals.dimensionpay | Everyone | Permission to use `/dpay`                                                   |
 
 ### <a name="placeholders">Placeholders</a>

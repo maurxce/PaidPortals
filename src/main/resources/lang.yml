@@ -14,5 +14,7 @@ dimensions-already-unlocked: "&5&l[UD] All dimensions are already unlocked."
 portal-creation: "&5&l[UD] &dSorry! Portal creation is currently disabled."
 portal-enter: "&5&l[UD] &dSorry! This dimension isn't unlocked yet."
 
+current-pool-amount: "&5&l[UD] &dThere's currently &o$%amount% &din the pool." # %amount%
+
 placeholder-dimension-locked: "&c&lLocked"
 placeholder-dimension-unlocked: "&a&lUnlocked"

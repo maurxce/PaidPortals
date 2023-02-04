@@ -18,7 +18,12 @@ commands:
   resetpool:
     description: reset the pool
     usage: /<command>
-    permission: paidportals.reset
+    permission: paidportals.resetpool
+
+  viewpool:
+    description: view the amount of money in the pool
+    usage: /<command>
+    permission: paidportals.viewpool
 
   dpay:
     description: pay a specific amount of money into the dimensions pool
@@ -42,6 +47,10 @@ permissions:
   paidportals.resetpool:
     description: permission to reset the dimension pool
     default: op
+
+  paidportals.viewpool:
+    description: permission to view the dimension pool
+    default: true
 
   paidportals.dimensionpay:
     description: permission to pay into all pools

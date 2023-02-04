@@ -1,10 +1,7 @@
 package me.maurxce.paidportals.managers;
 
 import me.maurxce.paidportals.Main;
-import me.maurxce.paidportals.commands.DimensionPay;
-import me.maurxce.paidportals.commands.PaidPortals;
-import me.maurxce.paidportals.commands.Reload;
-import me.maurxce.paidportals.commands.ResetPool;
+import me.maurxce.paidportals.commands.*;
 
 public class CommandManager {
 
@@ -14,6 +11,7 @@ public class CommandManager {
         main.getCommand("reload").setExecutor(new Reload());
         main.getCommand("resetpool").setExecutor(new ResetPool());
 
+        main.getCommand("viewpool").setExecutor(new ViewPool());
         main.getCommand("dpay").setExecutor(new DimensionPay());
 
         main.getCommand("paidportals").setExecutor(new PaidPortals());
