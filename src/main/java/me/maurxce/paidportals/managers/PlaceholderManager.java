@@ -48,11 +48,4 @@ public class PlaceholderManager extends PlaceholderExpansion {
 
         return null;
     }
-
-    public boolean setupPlaceholders() {
-        if (Bukkit.getServer().getPluginManager().getPlugin("PlaceholderAPI") == null) return false;
-
-        this.register();
-        return true;
-    }
 }

@@ -4,6 +4,8 @@ import me.maurxce.paidportals.managers.*;
 import me.maurxce.paidportals.services.Database;
 import me.maurxce.paidportals.utils.Logger;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -19,25 +21,33 @@ public final class Main extends JavaPlugin {
         FileManager.loadFiles();
         dbManager.setupDatabase();
 
+       checkDependencies();
+
         CommandManager.register();
         EventManager.register();
 
         MetricsManager.enable();
-
-        checkDependencies();
     }
 
     private void checkDependencies() {
-        if (!EconomyManager.setupEconomy()) {
-            Logger.error("Couldn't find dependency: Vault");
-            disablePlugin();
-            return;
+        PluginManager pm = Bukkit.getPluginManager();
+
+        if (pm.getPlugin("PlaceholderAPI") == null) {
+            Logger.error("Couldn't find PlaceholderAPI!");
+            pm.disablePlugin(this);
         }
 
-        PlaceholderManager placeholderManager = new PlaceholderManager();
-        if (!placeholderManager.setupPlaceholders()) {
-            Logger.error("Couldn't find dependency: PlaceholderAPI");
-            return;
+        new PlaceholderManager().register();
+
+        if (pm.getPlugin("Vault") == null) {
+            Logger.error("Couldn't find Vault!");
+            pm.disablePlugin(this);
+        }
+
+        boolean setupEconomy = EconomyManager.setupEconomy();
+        if (!setupEconomy) {
+            Logger.error("Couldn't set up Vault economy!");
+            pm.disablePlugin(this);
         }
     }
 

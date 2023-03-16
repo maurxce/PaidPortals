@@ -6,8 +6,7 @@ prefix: PaidPortals
 authors: [ maurxce ]
 description: A plugin which locks dimensions until a certain amount of money was paid by the players (in a pool)
 website: https://maurxce.dev/
-softdepend: [ PlaceholderAPI ]
-depend: [ Vault ]
+depend: [ Vault, PlaceholderAPI ]
 
 commands:
   reload:
